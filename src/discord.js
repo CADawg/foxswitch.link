@@ -30,20 +30,26 @@ function updateName(nickname) {
 }
 
 function getName() {
-  return name
-}
-
-function updateSavedName() {
-  bot.users.fetch("260956223132794881").then((res1) => {
-    bot.guilds.fetch("726932810459512843").then((res) => {
-      name = res.member(res1).displayName
+  return new Promise((resolve, reject) => {
+    bot.users.fetch("260956223132794881").then((res1) => {
+      bot.guilds.fetch("726932810459512843").then((res) => {
+       resolve(res.member(res1).displayName)
+      })
     })
   })
 }
 
-setInterval(() => {
-  updateSavedName()
-}, 1000)
+// function updateSavedName() {
+//   bot.users.fetch("260956223132794881").then((res1) => {
+//     bot.guilds.fetch("726932810459512843").then((res) => {
+//       name = res.member(res1).displayName
+//     })
+//   })
+// }
+
+// setInterval(() => {
+//   updateSavedName()
+// }, 1000)
 
 bot.login(discordToken)
 
