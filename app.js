@@ -4,6 +4,7 @@ let favicon = require('serve-favicon')
 let bodyParser = require('body-parser')
 let helmet = require('helmet')
 let ejs = require("ejs")
+let path = require("path")
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
