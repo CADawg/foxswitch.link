@@ -12,8 +12,8 @@ router.post("/", async (req, res) => {
   res.json({success : true})
 });
 
-router.options("/", async (req, res) => {
-  res.json({name: await discord.getName()});
+router.options("/", (req, res) => {
+  res.json({name: discord.getName()});
 });
 
 
