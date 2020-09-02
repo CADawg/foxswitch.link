@@ -11,9 +11,9 @@ router.options("/", async(req, res) => {
 
 router.post((req, res) => {
   if (req.body.on === true){
-    discord.updateName("foxoff")
-  } else {
     discord.updateName("foxon")
+  } else {
+    discord.updateName("foxoff")
   }
   res.json({success : true})
 })
