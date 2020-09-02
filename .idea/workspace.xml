@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="75c71abd-42d5-4ba1-b43c-b3f19db8e161" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/discord.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/discord.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/toggle3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/toggle3.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
       <workItem from="1599067784713" duration="2713000" />
       <workItem from="1599077126568" duration="836000" />
       <workItem from="1599077982539" duration="8000" />
-      <workItem from="1599077993657" duration="991000" />
+      <workItem from="1599077993657" duration="1621000" />
     </task>
     <servers />
   </component>

@@ -31,4 +31,4 @@ setInterval(async function () {
     }).catch(function () {
         console.log("Failed to get current state!");
     });
-}, 1000);
+}, 2500);
