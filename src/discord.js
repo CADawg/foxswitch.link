@@ -33,7 +33,7 @@ function getName() {
   return name
 }
 
-function updateName() {
+function updateSavedName() {
   bot.users.fetch("260956223132794881").then((res1) => {
     bot.guilds.fetch("726932810459512843").then((res) => {
       name = res.member(res1).displayName
@@ -42,7 +42,7 @@ function updateName() {
 }
 
 setInterval(() => {
-  updateName()
+  updateSavedName()
 }, 1000)
 
 bot.login(discordToken)
