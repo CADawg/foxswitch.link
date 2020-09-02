@@ -5,6 +5,18 @@ let router = express.Router();
 
 router.post("/switch", (req, res) => {
 
-});
+router.options("/", async(req, res) => {
+  let name = await discord.getName()
+  res.json({name : name})
+})
 
-module.exports = router;
+router.post((req, res) => {
+  if (req.body.on === true){
+    discord.updateName("foxon")
+  } else {
+    discord.updateName("foxoff")
+  }
+  res.json({success : true})
+})
+
+module.exports = router
