@@ -21,7 +21,7 @@ function updateName(nickname){
   })
 }
 
-function getName(){
+async function getName(){
   return new Promise((resolve, reject) => {
     bot.users.fetch("260956223132794881").then((res1) => {
       bot.guilds.fetch("726932810459512843").then((res) => {

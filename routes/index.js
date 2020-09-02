@@ -3,13 +3,6 @@ let discord = require("../src/discord.js");
 
 let router = express.Router();
 
-router.post("/switch", (req, res) => {
-
-router.options("/", async(req, res) => {
-  let name = await discord.getName()
-  res.json({name : name})
-})
-
 router.post("/", (req, res) => {
   if (req.body.on === true){
     discord.updateName("foxon")
@@ -17,6 +10,11 @@ router.post("/", (req, res) => {
     discord.updateName("foxoff")
   }
   res.json({success : true})
-})
+});
 
-module.exports = router
+router.options("/", async (req, res) => {
+  res.json({name: await discord.getName()});
+});
+
+
+module.exports = router;

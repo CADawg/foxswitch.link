@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>FoxSwitch</title>
+    <script src="axios.js"></script>
+    <link href="index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+    <div>
+        <label class="switch">
+            <input id="checkbox" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </div>
 
+    <script>
+        axios.post('/', {on: document.getElementById("checkbox").checked})
+    </script>
 </body>
 </html>
