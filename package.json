@@ -1,0 +1,23 @@
+{
+  "name": "foxswitch.link",
+  "version": "1.0.0",
+  "description": "Toggles Fox(on)'s name between Foxon and Foxoff",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Snaddyvitch-Dispenser/foxswitch.link.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Snaddyvitch-Dispenser/foxswitch.link/issues"
+  },
+  "homepage": "https://github.com/Snaddyvitch-Dispenser/foxswitch.link#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
