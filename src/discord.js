@@ -5,15 +5,16 @@ let bot = new Discord.Client()
 let discordToken = process.env.DISCORD_TOKEN
 
 bot.on('ready', () => {
-    console.log('Bot has started')
+  console.log('Bot has started')
 })
 
 bot.on('error', e => {
   console.log(e);
 });
 
+let name = ""
 
-function updateName(nickname){
+function updateName(nickname) {
   return new Promise((resolve, reject) => {
     bot.users.fetch("260956223132794881").then((res1) => {
       bot.guilds.fetch("726932810459512843").then((res) => {
@@ -28,19 +29,21 @@ function updateName(nickname){
   })
 }
 
-async function getName(){
-  return new Promise((resolve, reject) => {
-    bot.users.fetch("260956223132794881").then((res1) => {
-      bot.guilds.fetch("726932810459512843").then((res) => {
-        resolve(res.member(res1).displayName)
-      }).catch((err) => {
-        reject(err)
-      })
-    }).catch((err) => {
-      reject(err)
+function getName() {
+  return name
+}
+
+function updateName() {
+  bot.users.fetch("260956223132794881").then((res1) => {
+    bot.guilds.fetch("726932810459512843").then((res) => {
+      name = res.member(res1).displayName
     })
   })
 }
+
+setInterval(() => {
+  updateName()
+}, 1000)
 
 bot.login(discordToken)
 
