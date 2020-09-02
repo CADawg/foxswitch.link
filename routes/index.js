@@ -3,11 +3,11 @@ let discord = require("../src/discord.js");
 
 let router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   if (req.body.on === true){
-    discord.updateName("foxon")
+    let x = await discord.updateName("foxon")
   } else {
-    discord.updateName("foxoff")
+    let x = await discord.updateName("foxoff")
   }
   res.json({success : true})
 });

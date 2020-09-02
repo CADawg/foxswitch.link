@@ -14,9 +14,16 @@ bot.on('error', e => {
 
 
 function updateName(nickname){
-  bot.users.fetch("260956223132794881").then((res1) => {
-    bot.guilds.fetch("726932810459512843").then((res) => {
-      res.member(res1).setNickname(nickname)
+  return new Promise((resolve, reject) => {
+    bot.users.fetch("260956223132794881").then((res1) => {
+      bot.guilds.fetch("726932810459512843").then((res) => {
+        res.member(res1).setNickname(nickname)
+        resolve(true)
+      }).catch((err) => {
+        reject(err)
+      })
+    }).catch((err) => {
+      reject(err)
     })
   })
 }
