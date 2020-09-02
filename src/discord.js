@@ -1,19 +1,18 @@
-let Discord = require("discord.js")
+let Discord = require("discord.js");
+require('dotenv').config()
 
-
-
-let bot = new Discord.Client()
+let bot = new Discord.Client();
 
 bot.on('ready', () => {
-    console.log('Bot has started')
-    bot.user.setActivity("Fox", {
+    console.log('FoxSwitch Discord Bot Connected');
+    bot.user.setActivity("FoxSwitch.link", {
         type: 'PLAYING'
-    })
-})
+    });
+});
 
 bot.on('error', e => {
-  console.log(e)
-})
+  console.log(e);
+});
 
 
-bot.login(token)
+bot.login(process.env.DISCORD_TOKEN);

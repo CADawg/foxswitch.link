@@ -1,11 +1,10 @@
-let express = require('express')
-let discord = require("../src/discord.js")
+let express = require('express');
+let discord = require("../src/discord.js");
 
-let router = express.Router()
+let router = express.Router();
 
+router.post("/switch", (req, res) => {
 
-router.post("/", (req, res) => {
+});
 
-})
-
-module.exports = router
+module.exports = router;
