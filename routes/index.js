@@ -10,7 +10,7 @@ router.options("/", async(req, res) => {
   res.json({name : name})
 })
 
-router.post((req, res) => {
+router.post("/", (req, res) => {
   if (req.body.on === true){
     discord.updateName("foxon")
   } else {
