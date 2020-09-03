@@ -7,13 +7,58 @@ html, body {
     width: 100%;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.space {
+    height: 38px;
+}
+
 h1, p {
     display: none;
 }
 
-body.disconnected > h1, body.disconnected > p {
+body.pre-connected .pre-connected-text {
     display: block;
     text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+    font-weight: lighter;
+    margin: 15px auto 5px;
+}
+
+.pre-connected-text {
+    display: none;
+}
+
+body.disconnected .disconnected-text {
+    display: block;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1.click-switch {
+    font-weight: lighter;
+    font-size: 32px;
+    display: none;
+    font-family: Arial, sans-serif;
+}
+
+h1.click-switch.show {
+    display: block;
+}
+
+h1.disconnected-text {
+    font-size: 32px;
+    font-weight: lighter;
+    margin: 15px auto 5px;
+}
+
+p.disconnected-text {
+    font-size: 24px;
+    font-weight: lighter;
+    margin: 0 auto;
 }
 
 body > div {
@@ -51,6 +96,11 @@ body > div {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
+}
+
+input:disabled + .slider {
+    opacity: 0.5;
+    outline: none;
 }
 
 .slider:before {

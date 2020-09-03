@@ -6,14 +6,18 @@
     <script src="axios.js"></script>
     <link href="webpage.css" rel="stylesheet" type="text/css" />
 </head>
-<body class="disconnected">
+<body class="pre-connected">
     <div>
         <label class="switch">
             <input id="checkbox" type="checkbox">
             <span class="slider round"></span>
         </label>
-        <h1>Either your browser doesn't like websockets, you've been idle for too long or we've written some bad code</h1>
-        <p>Refresh the Page to try and reconnect.</p>
+        <div class="space">
+            <h1 id="countdown-text" class="click-switch">You can click the switch again in <strong id="number-time">0.50</strong> Seconds</h1>
+            <h1 class="pre-connected-text">Connecting...</h1>
+            <h1 class="disconnected-text">Either your browser doesn't like websockets, you've been idle for too long or we've written some bad code</h1>
+            <p class="disconnected-text">Refresh the Page to try and reconnect.</p>
+        </div>
     </div>
     <script src="toggle-websocket.js"></script>
 </body>
