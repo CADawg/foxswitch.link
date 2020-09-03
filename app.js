@@ -11,7 +11,7 @@ let app = new App();
 app.ws("/*", {
     open: (ws) => {
         ws.subscribe("toggle");
-        ws.send(this.state.toString())
+        ws.send(state.toString())
     },
 
     message: (ws, message, isBinary) => {
