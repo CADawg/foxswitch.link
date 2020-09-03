@@ -1,21 +1,47 @@
-let express = require('express');
-let app = express();
-let bodyParser = require('body-parser');
-let helmet = require('helmet');
-let path = require("path");
+const { App } = require("@sifrr/server");
+const path = require("path");
+let discord = require("./src/discord.js");
+let port = 8080;
+let state = true;
+let lastState = null;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(helmet());
+let app = new App();
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.ws("/*", {
+    open: (ws) => {
+        ws.subscribe("toggle");
+    },
 
-let index = require("./routes/index.js");
+    message: (ws, message, isBinary) => {
+        let messageText = Buffer.from(message).toString();
+        let boolMessageText = messageText.split("#");
 
+        if (["true","false"].includes(boolMessageText[0])) {
+            if (!boolMessageText[1]) {
+                state = (messageText === "true");
 
-app.use('/', index);
+                ws.publish("toggle", message, isBinary);
+            } else {
+                ws.publish("channel" + boolMessageText[1], message, isBinary);
+            }
+        } else if (messageText.startsWith("change-channel:")) {
+            ws.unsubscribeAll();
+            ws.subscribe("channel" + messageText.replace("change-channel:", ""));
+        }
+    }
 
+}).folder("/", path.join(__dirname, "public")).listen(port, (token) => {
+    if (token) {
+        console.log('Listening to port ' + port);
+    } else {
+        console.log('Failed to listen to port ' + port);
+    }
+}).file("/", path.join(__dirname, "public", "index.html"), {compress: true});
 
+setInterval(async () => {
+    if (state !== lastState) {
+        await discord.updateName(state ? "foxon" : "foxoff");
+    }
 
-app.listen(8080);
+    lastState = state;
+}, 5000);
