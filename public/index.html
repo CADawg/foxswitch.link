@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <title>FoxSwitch</title>
     <script src="axios.js"></script>
-    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="webpage.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
+<body class="disconnected">
     <div>
         <label class="switch">
             <input id="checkbox" type="checkbox">
             <span class="slider round"></span>
         </label>
+        <h1>Either your browser doesn't like websockets, you've been idle for too long or we've written some bad code</h1>
+        <p>Refresh the Page to try and reconnect.</p>
     </div>
-    <script src="toggle3.js"></script>
+    <script src="toggle-websocket.js"></script>
 </body>
 </html>
