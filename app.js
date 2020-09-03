@@ -4,12 +4,14 @@ let discord = require("./src/discord.js");
 let port = 8080;
 let state = true;
 let lastState = null;
+let channelStates = {};
 
 let app = new App();
 
 app.ws("/*", {
     open: (ws) => {
         ws.subscribe("toggle");
+        ws.send(this.state.toString())
     },
 
     message: (ws, message, isBinary) => {
@@ -22,11 +24,18 @@ app.ws("/*", {
 
                 ws.publish("toggle", message, isBinary);
             } else {
-                ws.publish("channel" + boolMessageText[1], message, isBinary);
+                if (boolMessageText[1].toLowerCase().match(/[a-z]{1,32}/)) {
+                    channelStates[boolMessageText[1].toLowerCase()] = (boolMessageText[1] === "true");
+                    ws.publish("channel" + boolMessageText[1], message, isBinary);
+                }
             }
         } else if (messageText.startsWith("change-channel:")) {
-            ws.unsubscribeAll();
-            ws.subscribe("channel" + messageText.replace("change-channel:", ""));
+            let channel = messageText.replace("change-channel:", "").toLowerCase();
+            if (channel.match(/[a-z]{1,32}/)) {
+                ws.unsubscribeAll();
+                ws.subscribe("channel" + channel);
+                ws.send((channelStates[channel] || true).toString());
+            }
         }
     }
 
