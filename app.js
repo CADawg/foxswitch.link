@@ -26,7 +26,7 @@ app.ws("/*", {
             } else {
                 if (boolMessageText[1].toLowerCase().match(/[a-z]{1,32}/)) {
                     channelStates[boolMessageText[1].toLowerCase()] = (boolMessageText[1] === "true");
-                    ws.publish("channel" + boolMessageText[1], message, isBinary);
+                    ws.publish("channel" + boolMessageText[1].toLowerCase(), message, isBinary);
                 }
             }
         } else if (messageText.startsWith("change-channel:")) {
