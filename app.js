@@ -10,7 +10,7 @@ let lastHit = {};
 let app = new App();
 
 function canHit(ip) {
-    if (lastHit.includes(ip)) {
+    if (lastHit.hasOwnProperty(ip)) {
         if (lastHit[ip] < (Date.now() - 500)) {
             lastHit[ip] = Date.now();
             return true;
@@ -30,7 +30,6 @@ app.ws("/*", {
     },
 
     message: (ws, message, isBinary) => {
-        console.log(ws.getRemoteAddressAsText());
         if (!canHit(ws.getRemoteAddressAsText())) return false;
 
         let messageText = Buffer.from(message).toString();
