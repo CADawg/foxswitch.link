@@ -30,6 +30,7 @@ app.ws("/*", {
     },
 
     message: (ws, message, isBinary) => {
+        console.log(ws.getRemoteAddressAsText());
         if (!canHit(ws.getRemoteAddressAsText())) return false;
 
         let messageText = Buffer.from(message).toString();
