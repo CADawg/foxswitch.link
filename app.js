@@ -24,6 +24,8 @@ function canHit(ip) {
 }
 
 app.ws("/*", {
+    idleTimeout: 0,
+
     open: (ws) => {
         ws.subscribe("toggle");
         ws.send(state.toString())

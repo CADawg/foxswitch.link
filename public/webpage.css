@@ -15,6 +15,17 @@ html, body {
     height: 38px;
 }
 
+.help {
+    position: fixed;
+    font-size: 72px;
+    font-weight: bolder;
+    color: black;
+    font-family: Arial, sans-serif;
+    top: 20px;
+    right: 30px;
+    text-decoration: none;
+}
+
 h1, p {
     display: none;
 }
